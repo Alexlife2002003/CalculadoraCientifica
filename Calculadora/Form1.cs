@@ -300,6 +300,7 @@ public partial class Form1 : Form
     btnXy.Click+=new EventHandler(btn_click);
     btnMod.Click+=new EventHandler(btn_click);
     btnExp.Click+=new EventHandler(btn_click);
+    btnDec.Click+=new EventHandler(btnDec_Click);
     //Agregar controles al formulario
     this.Controls.Add(txtDisplay);
     this.Controls.Add(lblOperacion);
@@ -315,6 +316,7 @@ public partial class Form1 : Form
         lblOperacion.Text=$"1/({txtDisplay.Text}) =";
         txtDisplay.Text=(1/Double.Parse(txtDisplay.Text)).ToString();
     }
+
 
     private void btnLnx_Click(object? sender, EventArgs e){
         lblOperacion.Text=$"Ln({txtDisplay.Text}) =";
@@ -400,6 +402,27 @@ public partial class Form1 : Form
             }
         }
     }
+     private void btnDec_Click(object? sender, EventArgs e){
+        if(txtDisplay.Text.Contains(".")){
+            String valor=txtDisplay.Text;
+            while(valor.Contains(".")){
+                double valo=Double.Parse(valor);
+                valo=valo*10;
+                valor=valo.ToString();
+            }
+            txtDisplay.Text=valor;
+            
+           
+            }else{
+                lblOperacion.Text=$"Dec({txtDisplay.Text}) =";
+                txtDisplay.Text=txtDisplay.Text;
+
+            }
+        }
+    
+
+
+    
 
     private void btnSin_Click(object? sender, EventArgs e){
         lblOperacion.Text=$"Sin({txtDisplay.Text}) =";
